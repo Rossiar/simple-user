@@ -15,7 +15,7 @@ import org.springframework.boot.test.json.JacksonTester;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.LinkedList;
@@ -29,10 +29,7 @@ import static org.mockito.Mockito.verify;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-/**
- * Created by ross on 17/10/16.
- */
-@RunWith(SpringRunner.class)
+@RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest
 @AutoConfigureMockMvc
 public class UserApplicationIT {
@@ -45,11 +42,11 @@ public class UserApplicationIT {
 
     private JacksonTester<SimpleUser> json;
 
+
     @Before
     public void setup() throws Exception {
         JacksonTester.initFields(this, new ObjectMapper());
     }
-
 
     @Test
     public void listUsers() throws Exception {
@@ -67,8 +64,8 @@ public class UserApplicationIT {
         mockMvc.perform(get("/users"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8))
-                .andExpect(jsonPath("$[0].first_name", is(firstName)))
-                .andExpect(jsonPath("$[0].last_name", is(lastName)))
+                .andExpect(jsonPath("$[0].firstName", is(firstName)))
+                .andExpect(jsonPath("$[0].lastName", is(lastName)))
                 .andExpect(jsonPath("$[0].nickname", is(nickName)))
                 .andExpect(jsonPath("$[0].password", is(password)))
                 .andExpect(jsonPath("$[0].email", is(email)))
