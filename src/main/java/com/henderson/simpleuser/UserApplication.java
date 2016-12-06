@@ -8,17 +8,19 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
 @SpringBootApplication
+@EnableMongoRepositories
 public class UserApplication {
 
 
     @Bean
     public CommandLineRunner init(SimpleUserRepository userRepository, CountryRespository countryRespository) {
         return (evt) -> {
-            /**
-             * Loads some users into the database at runtime, obviously this is just an example and wouldn't be part
-             * of a production system.
+            /*
+              Loads some users into the database at runtime, obviously this is just an example and wouldn't be part
+              of a production system.
              */
             Country uk = new Country(1L, "United Kingdom");
             Country fr = new Country(2L, "France");

@@ -1,6 +1,7 @@
 package com.henderson.simpleuser.domain;
 
-import javax.persistence.*;
+import org.springframework.data.annotation.Id;
+
 import javax.validation.constraints.NotNull;
 
 /**
@@ -9,19 +10,16 @@ import javax.validation.constraints.NotNull;
  *
  * Spring also handles serialization of this class into / out of JSON
  */
-@Entity
-@Table(name = "users")
 public class SimpleUser {
 
     @Id
-    @GeneratedValue
     private Long id;
 
     @NotNull
-    private String first_name;
+    private String firstName;
 
     @NotNull
-    private String last_name;
+    private String lastName;
 
     @NotNull
     private String nickname;
@@ -33,7 +31,6 @@ public class SimpleUser {
     private String email;
 
     @NotNull
-    @ManyToOne
     private Country country;
 
 
@@ -41,37 +38,37 @@ public class SimpleUser {
         super();
     }
 
-    public SimpleUser(Long id, String first_name, String last_name, String nickname, String password, String email,
+    public SimpleUser(Long id, String firstName, String lastName, String nickname, String password, String email,
                       Country country) {
         this.id = id;
-        this.first_name = first_name;
-        this.last_name = last_name;
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.nickname = nickname;
         this.password = password;
         this.email = email;
         this.country = country;
     }
 
-    public SimpleUser(Long id, String first_name, String last_name, String nickname, String password, String email,
+    public SimpleUser(Long id, String firstName, String lastName, String nickname, String password, String email,
                       String country) {
-        this(id, first_name, last_name, nickname, password, email, new Country(country));
+        this(id, firstName, lastName, nickname, password, email, new Country(country));
     }
 
-    public SimpleUser(String first_name, String last_name, String nickname, String password, String email,
+    public SimpleUser(String firstName, String lastName, String nickname, String password, String email,
                       String country) {
-        this(-1L, first_name, last_name, nickname, password, email, country);
+        this(-1L, firstName, lastName, nickname, password, email, country);
     }
 
     public Long getId() {
         return id;
     }
 
-    public String getFirst_name() {
-        return first_name;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public String getLast_name() {
-        return last_name;
+    public String getLastName() {
+        return lastName;
     }
 
     public String getNickname() {
