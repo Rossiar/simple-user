@@ -32,7 +32,7 @@ public class UserApplication {
             userRepository.save(new SimpleUser(2L, "Frederic", "Ellsworth", "Frederic-104", "SPARTAN-104", "fred@orion.com", fr));
             userRepository.save(new SimpleUser(3L, "Linda", "Pravdin", "Linda-058", "SPARTAN-058", "linda@orion.com", sc));
             userRepository.save(new SimpleUser(4L, "Kurt M.", "Trevelyan", "Kurt-051", "SPARTAN-051", "kurt@orion.com", fr));
-            userRepository.save(new SimpleUser(5L, "Master", "Chief", "John-177", "SPARTAN-117", "john@orion.com", uk));
+            userRepository.save(new SimpleUser(5L, "Master", "Chief", "John-117", "SPARTAN-117", "john@orion.com", uk));
         };
     }
 

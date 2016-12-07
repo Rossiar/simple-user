@@ -25,6 +25,6 @@ public interface SimpleUserRepository extends CrudRepository<SimpleUser, Long> {
     void delete(Long id);
 
     @Override
-    boolean exists(Long aLong);
+    boolean exists(Long id);
 
 }
