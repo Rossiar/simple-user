@@ -41,21 +41,21 @@ public class SimpleUserRepositoryTest {
 
 
     @Test
-    @UsingDataSet(locations = "/users.json", loadStrategy = LoadStrategyEnum.CLEAN_INSERT)
+    @UsingDataSet(locations = "/simpleuser/users.json", loadStrategy = LoadStrategyEnum.CLEAN_INSERT)
     public void findAll() throws Exception {
         List<SimpleUser> users = simpleUserRepository.findAll();
         assertThat(users.size()).isEqualTo(5);
     }
 
     @Test
-    @UsingDataSet(locations = "/empty.json", loadStrategy = LoadStrategyEnum.CLEAN_INSERT)
+    @UsingDataSet(locations = "/simpleuser/empty.json", loadStrategy = LoadStrategyEnum.CLEAN_INSERT)
     public void findAllEmptyDatabase() throws Exception {
         List<SimpleUser> users = simpleUserRepository.findAll();
         assertThat(users).isEmpty();
     }
 
     @Test
-    @UsingDataSet(locations = "/user.json", loadStrategy = LoadStrategyEnum.CLEAN_INSERT)
+    @UsingDataSet(locations = "/simpleuser/user.json", loadStrategy = LoadStrategyEnum.CLEAN_INSERT)
     public void findOne() throws Exception {
         Long id = 1L;
         String firstName = "Master";
@@ -78,14 +78,14 @@ public class SimpleUserRepositoryTest {
     }
 
     @Test
-    @UsingDataSet(locations = "/user.json", loadStrategy = LoadStrategyEnum.CLEAN_INSERT)
+    @UsingDataSet(locations = "/simpleuser/user.json", loadStrategy = LoadStrategyEnum.CLEAN_INSERT)
     public void findOneNotFound() throws Exception {
         SimpleUser user = simpleUserRepository.findOne(2L);
         assertThat(user).isNull();
     }
 
     @Test
-    @ShouldMatchDataSet(location = "/user.json")
+    @ShouldMatchDataSet(location = "/simpleuser/user.json")
     public void save() throws Exception {
         simpleUserRepository.save(new SimpleUser(1L, "Master", "Chief", "John-117", "SPARTAN-117", "john@orion.com",
                 new Country(1L, "United Kingdom")));
@@ -95,29 +95,29 @@ public class SimpleUserRepositoryTest {
      * This test confirms that the database will replace a record totally if a new record is saved with the same `id`
      */
     @Test
-    @UsingDataSet(locations = "/user.json", loadStrategy = LoadStrategyEnum.CLEAN_INSERT)
-    @ShouldMatchDataSet(location = "/newuser.json")
+    @UsingDataSet(locations = "/simpleuser/user.json", loadStrategy = LoadStrategyEnum.CLEAN_INSERT)
+    @ShouldMatchDataSet(location = "/simpleuser/newuser.json")
     public void saveAlreadyExists() throws Exception {
         simpleUserRepository.save(new SimpleUser(1L, "Kelly", "Shaddock", "Kelly-087", "SPARTAN-087", "kelly@orion.com",
                 new Country(1L, "United Kingdom")));
     }
 
     @Test
-    @UsingDataSet(locations = "/user.json", loadStrategy = LoadStrategyEnum.CLEAN_INSERT)
+    @UsingDataSet(locations = "/simpleuser/user.json", loadStrategy = LoadStrategyEnum.CLEAN_INSERT)
     public void delete() throws Exception {
         simpleUserRepository.delete(1L);
         assertThat(simpleUserRepository.findAll()).isEmpty();
     }
 
     @Test
-    @UsingDataSet(locations = "/user.json", loadStrategy = LoadStrategyEnum.CLEAN_INSERT)
+    @UsingDataSet(locations = "/simpleuser/user.json", loadStrategy = LoadStrategyEnum.CLEAN_INSERT)
     public void exists() throws Exception {
         boolean exists = simpleUserRepository.exists(1L);
         assertThat(exists).isTrue();
     }
 
     @Test
-    @UsingDataSet(locations = "/empty.json", loadStrategy = LoadStrategyEnum.CLEAN_INSERT)
+    @UsingDataSet(locations = "/simpleuser/empty.json", loadStrategy = LoadStrategyEnum.CLEAN_INSERT)
     public void doesNotExist() throws Exception {
         boolean exists = simpleUserRepository.exists(1L);
         assertThat(exists).isFalse();
