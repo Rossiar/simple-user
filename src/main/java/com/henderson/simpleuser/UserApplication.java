@@ -2,7 +2,7 @@ package com.henderson.simpleuser;
 
 import com.henderson.simpleuser.domain.Country;
 import com.henderson.simpleuser.domain.SimpleUser;
-import com.henderson.simpleuser.repository.CountryRespository;
+import com.henderson.simpleuser.repository.CountryRepository;
 import com.henderson.simpleuser.repository.SimpleUserRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -16,7 +16,7 @@ public class UserApplication {
 
 
     @Bean
-    public CommandLineRunner init(SimpleUserRepository userRepository, CountryRespository countryRespository) {
+    public CommandLineRunner init(SimpleUserRepository userRepository, CountryRepository countryRepository) {
         return (evt) -> {
             /*
               Loads some users into the database at runtime, obviously this is just an example and wouldn't be part
@@ -26,9 +26,9 @@ public class UserApplication {
             Country fr = new Country(2L, "France");
             Country sc = new Country(3L, "Scotland");
 
-            countryRespository.save(uk);
-            countryRespository.save(fr);
-            countryRespository.save(sc);
+            countryRepository.save(uk);
+            countryRepository.save(fr);
+            countryRepository.save(sc);
 
             userRepository.save(new SimpleUser(1L, "Kelly", "Shaddock", "Kelly-087", "SPARTAN-087", "kelly@orion.com", uk));
             userRepository.save(new SimpleUser(2L, "Frederic", "Ellsworth", "Frederic-104", "SPARTAN-104", "fred@orion.com", fr));
