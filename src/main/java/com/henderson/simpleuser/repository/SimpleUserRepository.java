@@ -23,6 +23,6 @@ public interface SimpleUserRepository extends MongoRepository<SimpleUser, Long> 
     void delete(Long id);
 
     @Override
-    boolean exists(Long aLong);
+    boolean exists(Long id);
 
 }
