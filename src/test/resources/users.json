@@ -1,0 +1,64 @@
+{
+  "simpleUser": [
+    {
+      "_id": 1,
+      "firstName": "Kelly",
+      "lastName": "Shaddock",
+      "nickname": "Kelly-087",
+      "password": "SPARTAN-087",
+      "email": "kelly@orion.com",
+      "country": {
+        "_id": 1,
+        "name": "United Kingdom"
+      }
+    },
+    {
+      "_id": 2,
+      "firstName": "Frederic",
+      "lastName": "Ellsworth",
+      "nickname": "Frederic-104",
+      "password": "SPARTAN-104",
+      "email": "fred@orion.com",
+      "country": {
+        "_id": 2,
+        "name": "France"
+      }
+    },
+    {
+      "_id": 3,
+      "firstName": "Linda",
+      "lastName": "Pravdin",
+      "nickname": "Linda-058",
+      "password": "SPARTAN-058",
+      "email": "linda@orion.com",
+      "country": {
+        "_id": 3,
+        "name": "Scotland"
+      }
+    },
+    {
+      "_id": 4,
+      "firstName": "Kurt M.",
+      "lastName": "Trevelyan",
+      "nickname": "Kurt-051",
+      "password": "SPARTAN-051",
+      "email": "kurt@orion.com",
+      "country": {
+        "_id": 2,
+        "name": "France"
+      }
+    },
+    {
+      "_id": 5,
+      "firstName": "Master",
+      "lastName": "Chief",
+      "nickname": "John-177",
+      "password": "SPARTAN-117",
+      "email": "john@orion.com",
+      "country": {
+        "_id": 1,
+        "name": "United Kingdom"
+      }
+    }
+  ]
+}

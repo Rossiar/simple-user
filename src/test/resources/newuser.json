@@ -1,0 +1,16 @@
+{
+  "simpleUser": [
+    {
+      "_id": 1,
+      "firstName": "Kelly",
+      "lastName": "Shaddock",
+      "nickname": "Kelly-087",
+      "password": "SPARTAN-087",
+      "email": "kelly@orion.com",
+      "country": {
+        "_id": 1,
+        "name": "United Kingdom"
+      }
+    }
+  ]
+}
