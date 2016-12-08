@@ -1,10 +1,14 @@
 package com.henderson.simpleuser;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.github.fakemongo.Fongo;
+import com.henderson.simpleuser.config.FongoConfiguration;
 import com.henderson.simpleuser.domain.SimpleUser;
 import com.henderson.simpleuser.exceptions.AlreadyExistsException;
 import com.henderson.simpleuser.exceptions.NotFoundException;
+import com.henderson.simpleuser.repository.SimpleUserRepository;
 import com.henderson.simpleuser.service.SimpleUserService;
+import com.mongodb.Mongo;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -13,6 +17,11 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.json.JacksonTester;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.data.mongodb.config.AbstractMongoConfiguration;
+import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -30,7 +39,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringBootTest
+@SpringBootTest(classes = {UserApplication.class, FongoConfiguration.class})
 @AutoConfigureMockMvc
 public class UserApplicationIT {
 
@@ -188,4 +197,5 @@ public class UserApplicationIT {
         mockMvc.perform(delete("/users/" + id))
                 .andExpect(status().isNotFound());
     }
+
 }
